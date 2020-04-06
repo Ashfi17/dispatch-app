@@ -1,4 +1,4 @@
-1)Clone the git repo using command git clone https://github.com/Ashfi17/Product-Delivery-App.git
+1)Clone the git repo using command git clone https://github.com/Ashfi17/dispatch-app.git
 2)Inside the client folder run command -- npm i to install the packages
 3)Similarly inside the server folder run command -- npm i to install the packages
 6)Setup environment variables for your to connect to the database
