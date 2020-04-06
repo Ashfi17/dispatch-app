@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test suite for Home component should mount the component 1`] = `
+<div>
+  <div
+    className="table-card"
+  >
+    <div
+      className="search-sort-container"
+    >
+      <input
+        className="search-field"
+        id="search"
+        name="search"
+        onChange={[Function]}
+        placeholder="search source code"
+        value=""
+      />
+      <button
+        className="heading-buttons"
+        id="sort-btn"
+        onClick={[Function]}
+      >
+        Sort By Start Date
+      </button>
+      <button
+        className="heading-buttons"
+        id="export-button"
+        onClick={[Function]}
+      >
+        Export To excel
+      </button>
+      <button
+        className="heading-buttons"
+        onClick={[Function]}
+      >
+        Import New Data
+      </button>
+    </div>
+    <table
+      id="table-container"
+    >
+      <tr>
+        <th>
+          Delivery No.
+        </th>
+        <th>
+          Source Code
+        </th>
+        <th>
+          Destination Code
+        </th>
+        <th>
+          Transporter Code
+        </th>
+        <th>
+          Vehicle Number
+        </th>
+        <th>
+          Start Date
+        </th>
+        <th>
+          End Date
+        </th>
+      </tr>
+      <tr
+        key="0"
+      >
+        <td>
+          1
+        </td>
+        <td>
+          S001
+        </td>
+        <td>
+          D001
+        </td>
+        <td>
+          T001
+        </td>
+        <td>
+          MH04AB1234
+        </td>
+        <td>
+          2020-01-21
+        </td>
+        <td>
+          2020-02-22
+        </td>
+      </tr>
+    </table>
+    <p
+      className="message"
+    />
+  </div>
+</div>
+`;

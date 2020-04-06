@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should test the Login component should test if the component renders properly 1`] = `
+<div>
+  <p
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    Token Expired please login again
+  </p>
+  <div
+    className="login-signup-card"
+  >
+    <div
+      className="login-signup-elements-container"
+    >
+      <h3
+        className="login-Signup-Text-header"
+      >
+        Login
+      </h3>
+      <input
+        className="input-field"
+        id="login-email"
+        name="email"
+        onChange={[Function]}
+        placeholder="enter email"
+        value=""
+      />
+      <input
+        className="input-field"
+        id="login-password"
+        name="password"
+        onChange={[Function]}
+        placeholder="enter password"
+        type="password"
+      />
+      <span
+        className="error-text"
+      />
+      <button
+        className="submit-button"
+        id="login-submit-button"
+        onClick={[Function]}
+      >
+        Login
+      </button>
+    </div>
+  </div>
+</div>
+`;

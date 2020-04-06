@@ -1,0 +1,7 @@
+{
+  "mySqlHost": "",
+  "mySqlUser": "",
+  "mySqlPassword": "",
+  "mySqlDatabase": "",
+  "jwtPrivateKey": ""
+}

@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signup test suite should match the snapshpot 1`] = `
+<div>
+  <div
+    className="login-signup-card"
+  >
+    <h3
+      className="login-Signup-Text-header"
+    >
+      SignUp
+    </h3>
+    <div
+      className="login-signup-elements-container"
+    >
+      <input
+        className="input-field"
+        id="signup-name"
+        name="name"
+        onChange={[Function]}
+        placeholder="enter name"
+        value=""
+      />
+      <input
+        className="input-field"
+        id="signup-email"
+        name="email"
+        onChange={[Function]}
+        placeholder="enter email"
+        value=""
+      />
+      <input
+        className="input-field"
+        id="signup-address"
+        name="address"
+        onChange={[Function]}
+        placeholder="enter address"
+        value=""
+      />
+      <input
+        className="input-field"
+        id="signup-password"
+        name="password"
+        onChange={[Function]}
+        placeholder="enter password"
+        type="password"
+        value=""
+      />
+      <input
+        className="input-field"
+        id="signup-confirm-password"
+        name="confirmPassword"
+        onChange={[Function]}
+        placeholder="confirm password"
+        type="password"
+        value=""
+      />
+      <span
+        className="error-text"
+      />
+      <button
+        className="submit-button"
+        id="signup-submit-button"
+        onClick={[Function]}
+      >
+        SignUp
+      </button>
+    </div>
+  </div>
+</div>
+`;

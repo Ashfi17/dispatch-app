@@ -1,0 +1,49 @@
+.login-signup-card {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 180px;
+  width: 280px;
+  height: 320px;
+  border-radius: 6px;
+  box-shadow: 0px 2px 12px 4px #ccc;
+  background: #f79d5c;
+  /* f5cb5c */
+}
+
+.login-Signup-Text-header {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 16px;
+  color: #2a2b2a;
+}
+.login-signup-elements-container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.input-field {
+  margin: 5px auto;
+  width: 180px;
+  text-align: left;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ffffff;
+
+  outline: none;
+}
+.submit-button {
+  margin: 4px auto;
+  width: 100px;
+  padding: 6px;
+  background-color: #fe6281;
+  border: none;
+  border-radius: 4px;
+  color: #2a2b2a;
+  font-weight: 600;
+  cursor: pointer;
+}
+.error-text {
+  color: #fe6281;
+  text-align: center;
+  font-size: 16px;
+}

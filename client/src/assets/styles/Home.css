@@ -1,0 +1,89 @@
+table {
+  border-radius: 8px;
+  border-collapse: collapse;
+}
+.table-card {
+  margin: 20px 80px;
+  width: 80%;
+}
+table#table-container tr:nth-child(even) {
+  background-color: #eee;
+}
+table#table-container tr:nth-child(odd) {
+  background-color: #fff;
+}
+table#table-container th {
+  color: white;
+}
+th,
+td {
+  text-align: left;
+  text-align: center;
+  border-collapse: collapse;
+  font-weight: 600;
+}
+th {
+  font-size: 18px;
+  padding: 22px;
+  background-color: crimson;
+}
+td {
+  color: #858486;
+  font-size: 16px;
+  padding: 15px;
+}
+/* .export-btn {
+  float: right;
+  margin: 20px 10px;
+  width: 140px;
+  padding: 12px;
+  background-color: crimson;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  word-spacing: 1px;
+  cursor: pointer;
+  border: 1px solid white;
+} */
+.search-sort-container {
+  background-color: crimson;
+  height: 50px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+  justify-content: space-evenly;
+}
+.search-field {
+  width: 180px;
+  height: 10px;
+  margin: 10px 0px;
+  border-radius: 18px;
+  border: none;
+  outline: none;
+  padding: 12px;
+}
+
+.heading-buttons {
+  width: 140px;
+  height: 40px;
+  margin: 10px 70px;
+  border-radius: 6px;
+  padding: 0px 10px;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  background: none;
+  border: 1px solid white;
+}
+
+.message {
+  text-align: center;
+  color: crimson;
+  font-size: 16px;
+  font-weight: 600;
+}
