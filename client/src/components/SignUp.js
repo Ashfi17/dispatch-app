@@ -57,7 +57,6 @@ export class SignUp extends Component {
               user_name: this.state.name,
               user_email: this.state.email,
               user_password: this.state.password,
-              user_address: this.state.address,
             };
             await this.props.createUser(user, this.props.history);
 
@@ -98,14 +97,7 @@ export class SignUp extends Component {
               value={this.state.email}
               onChange={(e) => this.OnTextChange(e)}
             />
-            <input
-              id="signup-address"
-              className="input-field"
-              name="address"
-              placeholder="enter address"
-              value={this.state.address}
-              onChange={(e) => this.OnTextChange(e)}
-            />
+
             <input
               id="signup-password"
               className="input-field"

@@ -5,6 +5,79 @@ const officegen = require("officegen");
 const fs = require("fs");
 const path = require("path");
 
+//fetching all the source code
+router.get("/source_code", (req, res, next) => {
+  try {
+    mySqlConnection.query(
+      `SELECT source_code  FROM source_master  `,
+      (err, result) => {
+        if (!err) {
+          res.status(200).send({
+            status: 200,
+            data: result,
+            message: "fetched source_codes",
+          });
+        } else {
+          res.status(400).send({
+            status: 400,
+            message: "Error fetching source  codes",
+          });
+        }
+      }
+    );
+  } catch (e) {
+    next(e);
+  }
+});
+//fetching all the destination code
+router.get("/destination_code", (req, res, next) => {
+  try {
+    mySqlConnection.query(
+      `SELECT destn_code  FROM destination_master  `,
+      (err, result) => {
+        if (!err) {
+          res.status(200).send({
+            status: 200,
+            data: result,
+            message: "fetched destination_codes",
+          });
+        } else {
+          res.status(400).send({
+            status: 400,
+            message: "Error fetching destination  codes",
+          });
+        }
+      }
+    );
+  } catch (e) {
+    next(e);
+  }
+});
+//fetching all the transporter code
+router.get("/transporter_code", (req, res, next) => {
+  try {
+    mySqlConnection.query(
+      `SELECT  transporter_code from transporter_master   `,
+      (err, result) => {
+        if (!err) {
+          res.status(200).send({
+            status: 200,
+            data: result,
+            message: "fetched transporter_code",
+          });
+        } else {
+          res.status(400).send({
+            status: 400,
+            message: "Error fetching transporter  codes",
+          });
+        }
+      }
+    );
+  } catch (e) {
+    next(e);
+  }
+});
+
 //for adding source destination and transport details in master table
 router.post("/add-source-destination", async (req, res, next) => {
   // toUpperCase()
@@ -12,7 +85,7 @@ router.post("/add-source-destination", async (req, res, next) => {
   const destination = req.body.destination;
   const transporter = req.body.transporter;
   try {
-    if (!source || !destination || !transporter) {
+    if (!source || !destination) {
       res.status(400).send({
         message: "missing parameters",
       });
@@ -89,8 +162,15 @@ router.post("/add-dispatch-details", (req, res, next) => {
   const transporterCode = req.body.transporter_code;
 
   try {
-    const startDate = new Date(req.body.start_date).toISOString().slice(0, 10);
-    const endDate = new Date(req.body.end_date).toISOString().slice(0, 10);
+    const startDate = new Date(
+      req.body.start_date.split("-").reverse().join("-")
+    )
+      .toISOString()
+      .slice(0, 10);
+    const endDate = new Date(req.body.end_date.split("-").reverse().join("-"))
+      .toISOString()
+      .slice(0, 10);
+
     const vehicleNumber = req.body.vehicle_number;
     const vRegex = /(([A-Za-z]){2,3}(|-)(?:[0-9]){1,2}(|-)(?:[A-Za-z]){2}(|-)([0-9]){1,4})|(([A-Za-z]){2,3}(|-)([0-9]){1,4})/g;
     if (vRegex.test(vehicleNumber) && endDate > startDate) {
