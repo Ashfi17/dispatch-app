@@ -19,9 +19,7 @@ describe("Signup test suite", () => {
     const email = {
       target: "dummy email",
     };
-    const address = {
-      target: "dummy address",
-    };
+
     const password = {
       target: "dummy password",
     };
@@ -29,8 +27,7 @@ describe("Signup test suite", () => {
     expect(OnTextChange).toBeCalled();
     wrapper.find("#signup-email").simulate("change", email);
     expect(OnTextChange).toBeCalled();
-    wrapper.find("#signup-address").simulate("change", address);
-    expect(OnTextChange).toBeCalled();
+
     wrapper.find("#signup-password").simulate("change", password);
     expect(OnTextChange).toBeCalled();
   });
@@ -73,7 +70,7 @@ describe("Signup test suite", () => {
     wrapper.setState({
       name: "test name",
       email: "dummy@gmail.com",
-      address: "address line 123",
+
       password: "abc1234",
       confirmPassword: "abc1234",
     });
@@ -84,7 +81,7 @@ describe("Signup test suite", () => {
       {
         user_name: "test name",
         user_email: "dummy@gmail.com",
-        user_address: "address line 123",
+
         user_password: "abc1234",
       },
       history

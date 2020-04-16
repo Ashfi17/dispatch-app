@@ -1,3 +1,46 @@
 .add-source-destination {
-  border: 1px solid #333;
+  /* border: 1px solid #333; */
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-new-dispatch-info {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+.data-input-field {
+  padding: 16px;
+}
+
+.codeList {
+  width: 80px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 2px 12px 4px #ccc;
+  cursor: pointer;
+  margin: 0px;
+}
+
+.list-items {
+  padding: 8px;
+}
+.right-card-section {
+  margin-left: 20px;
+}
+.right-section-input {
+  margin-top: 76px;
+}
+.save-dispatch-button {
+  margin: 30px 420px;
+  width: 30%;
+  padding: 10px;
+  background-color: #fe6281;
+  border: none;
+  border-radius: 4px;
+  color: #2a2b2a;
+  font-weight: 600;
+  cursor: pointer;
 }

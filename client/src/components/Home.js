@@ -141,8 +141,12 @@ export class Home extends Component {
                 <td>{info.destination_code}</td>
                 <td>{info.transporter_code}</td>
                 <td>{info.vehicle_number}</td>
-                <td>{new Date(info.start_date).toISOString().slice(0, 10)}</td>
-                <td>{new Date(info.end_date).toISOString().slice(0, 10)}</td>
+                <td>
+                  {info.start_date.slice(0, 10).split("-").reverse().join("-")}
+                </td>
+                <td>
+                  {info.end_date.slice(0, 10).split("-").reverse().join("-")}
+                </td>
               </tr>
             ))}
           </table>

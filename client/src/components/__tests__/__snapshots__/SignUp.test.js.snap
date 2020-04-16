@@ -31,14 +31,6 @@ exports[`Signup test suite should match the snapshpot 1`] = `
       />
       <input
         className="input-field"
-        id="signup-address"
-        name="address"
-        onChange={[Function]}
-        placeholder="enter address"
-        value=""
-      />
-      <input
-        className="input-field"
         id="signup-password"
         name="password"
         onChange={[Function]}
