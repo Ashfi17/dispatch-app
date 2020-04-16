@@ -100,7 +100,14 @@ export class ImportDispatchDetails extends Component {
     };
 
     this.props.addNewDispatch(dispatchData);
-    this.setState({ errorMessage: "Added Successfully" });
+    this.setState({
+      sourceValue: "",
+      destinationValue: "",
+      transporterValue: "",
+      startDate: "",
+      endDate: "",
+      vehicleNumber: "",
+    });
   };
 
   addCode = (code, type) => {
@@ -176,8 +183,8 @@ export class ImportDispatchDetails extends Component {
           <span className="error-disptach-text">
             {this.props.errordispatchMessage
               ? this.props.errordispatchMessage
-              : this.props.DispatchDataMessage
-              ? this.props.DispatchDataMessage
+              : this.props.DataMessage
+              ? this.props.DataMessage
               : null}
           </span>
         </div>
@@ -305,6 +312,16 @@ export class ImportDispatchDetails extends Component {
         >
           Add
         </button>
+        <span
+          className="error-disptach-text"
+          style={{ paddingBottom: "30px", textAlign: "center" }}
+        >
+          {this.props.errordispatchMessage
+            ? this.props.errordispatchMessage
+            : this.props.DispatchInfoMessage
+            ? this.props.DispatchInfoMessage
+            : null}
+        </span>
       </div>
     );
   }
@@ -315,8 +332,9 @@ const mapStateToProps = (state) => ({
   sourceCode: state.DispatchReducer.sourceCode,
   destinationCode: state.DispatchReducer.destinationCode,
   transporterCode: state.DispatchReducer.transporterCode,
-  DispatchDataMessage: state.DispatchReducer.DispatchDataMessage,
+  DispatchInfoMessage: state.DispatchReducer.DispatchInfoMessage,
   errordispatchMessage: state.DispatchReducer.errordispatchMessage,
+  DataMessage: state.DispatchReducer.DataMessage,
 });
 export default connect(mapStateToProps, {
   addNewSDT,

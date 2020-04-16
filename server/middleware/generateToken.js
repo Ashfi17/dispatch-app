@@ -4,7 +4,7 @@ const jwtPrivateKey = config.get("jwtPrivateKey");
 
 module.exports = (payload) => {
   const token = jwt.sign(payload, jwtPrivateKey, {
-    expiresIn: "12h",
+    expiresIn: "5m",
   });
   return token;
 };

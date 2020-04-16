@@ -124,32 +124,40 @@ export class Home extends Component {
               Add New Detail
             </button>
           </div>
-          <table id="table-container">
-            <tr>
-              <th>Delivery No.</th>
-              <th>Source Code</th>
-              <th>Destination Code</th>
-              <th>Transporter Code</th>
-              <th>Vehicle Number</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-            </tr>
-            {this.props.dispatchDetails.map((info, index) => (
-              <tr key={index}>
-                <td>{info.delivery_number}</td>
-                <td>{info.source_code}</td>
-                <td>{info.destination_code}</td>
-                <td>{info.transporter_code}</td>
-                <td>{info.vehicle_number}</td>
-                <td>
-                  {info.start_date.slice(0, 10).split("-").reverse().join("-")}
-                </td>
-                <td>
-                  {info.end_date.slice(0, 10).split("-").reverse().join("-")}
-                </td>
+          {this.props.dispatchDetails ? (
+            <table id="table-container">
+              <tr>
+                <th>Delivery No.</th>
+                <th>Source Code</th>
+                <th>Destination Code</th>
+                <th>Transporter Code</th>
+                <th>Vehicle Number</th>
+                <th>Start Date</th>
+                <th>End Date</th>
               </tr>
-            ))}
-          </table>
+              {this.props.dispatchDetails.map((info, index) => (
+                <tr key={index}>
+                  <td>{info.delivery_number}</td>
+                  <td>{info.source_code}</td>
+                  <td>{info.destination_code}</td>
+                  <td>{info.transporter_code}</td>
+                  <td>{info.vehicle_number}</td>
+                  <td>
+                    {info.start_date
+                      .slice(0, 10)
+                      .split("-")
+                      .reverse()
+                      .join("-")}
+                  </td>
+                  <td>
+                    {info.end_date.slice(0, 10).split("-").reverse().join("-")}
+                  </td>
+                </tr>
+              ))}
+            </table>
+          ) : (
+            <span>No data yet, add some Dispatch Info to view here</span>
+          )}
           <p className="message">{this.state.message}</p>
         </div>
       </div>
