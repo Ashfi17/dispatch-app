@@ -116,7 +116,7 @@ describe("testing import dispatch details component", () => {
     expect(addCode).toBeCalled();
     expect(wrapper.state().destinationValueFlag).toBe(false);
   });
-  it("should test if the functions handleFocus,addCode,handleBlur are working and if the destination code are being added", () => {
+  it("should test if the functions handleFocus,addCode,handleBlur are working and if the transporter code are being added", () => {
     const OnTextChange = jest.spyOn(wrapper.instance(), "OnTextChange");
     const handleFocus = jest.spyOn(wrapper.instance(), "handleFocus");
     const addCode = jest.spyOn(wrapper.instance(), "addCode");

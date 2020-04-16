@@ -42,6 +42,9 @@ exports[`testing import dispatch details component should render the component 1
     >
       Save
     </button>
+    <span
+      className="error-disptach-text"
+    />
   </div>
   <h1
     style={
@@ -128,5 +131,14 @@ exports[`testing import dispatch details component should render the component 1
   >
     Add
   </button>
+  <span
+    className="error-disptach-text"
+    style={
+      Object {
+        "paddingBottom": "30px",
+        "textAlign": "center",
+      }
+    }
+  />
 </div>
 `;

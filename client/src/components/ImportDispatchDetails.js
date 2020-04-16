@@ -65,19 +65,27 @@ export class ImportDispatchDetails extends Component {
   };
 
   saveData = () => {
-    let data = {
-      source: this.state.source,
-      destination: this.state.destination,
-      transporter: this.state.transporter,
-    };
-    this.props.addNewSDT(data);
+    var decode = jwt_decode(localStorage.getItem("token"));
 
-    this.setState({
-      source: "",
-      destination: "",
-      transporter: "",
-      errorMessage: "Added Successfully",
-    });
+    if (Date.now() > decode.exp * 1000) {
+      this.props.history.push("/login", {
+        message: "Token expired please login again",
+      });
+    } else {
+      let data = {
+        source: this.state.source,
+        destination: this.state.destination,
+        transporter: this.state.transporter,
+      };
+      this.props.addNewSDT(data);
+
+      this.setState({
+        source: "",
+        destination: "",
+        transporter: "",
+        errorMessage: "Added Successfully",
+      });
+    }
   };
 
   saveDispatchDetails = async () => {
@@ -89,25 +97,32 @@ export class ImportDispatchDetails extends Component {
       startDate,
       endDate,
     } = this.state;
+    var decode = jwt_decode(localStorage.getItem("token"));
 
-    let dispatchData = {
-      source_code: sourceValue,
-      destination_code: destinationValue,
-      transporter_code: transporterValue,
-      start_date: startDate,
-      end_date: endDate,
-      vehicle_number: vehicleNumber,
-    };
+    if (Date.now() > decode.exp * 1000) {
+      this.props.history.push("/login", {
+        message: "Token expired please login again",
+      });
+    } else {
+      let dispatchData = {
+        source_code: sourceValue,
+        destination_code: destinationValue,
+        transporter_code: transporterValue,
+        start_date: startDate,
+        end_date: endDate,
+        vehicle_number: vehicleNumber,
+      };
 
-    this.props.addNewDispatch(dispatchData);
-    this.setState({
-      sourceValue: "",
-      destinationValue: "",
-      transporterValue: "",
-      startDate: "",
-      endDate: "",
-      vehicleNumber: "",
-    });
+      this.props.addNewDispatch(dispatchData);
+      this.setState({
+        sourceValue: "",
+        destinationValue: "",
+        transporterValue: "",
+        startDate: "",
+        endDate: "",
+        vehicleNumber: "",
+      });
+    }
   };
 
   addCode = (code, type) => {
@@ -120,17 +135,37 @@ export class ImportDispatchDetails extends Component {
   };
 
   handleFocus = (event) => {
+    var decode = jwt_decode(localStorage.getItem("token"));
     if (event.target.name === "sourceValue") {
-      this.props.getSourceCode();
-      this.setState({ sourceValueFlag: true });
+      //checking is the token is expired
+      if (Date.now() > decode.exp * 1000) {
+        this.props.history.push("/login", {
+          message: "Token expired please login again",
+        });
+      } else {
+        this.props.getSourceCode();
+        this.setState({ sourceValueFlag: true });
+      }
     }
     if (event.target.name === "destinationValue") {
-      this.props.getDestinationCode();
-      this.setState({ destinationValueFlag: true });
+      if (Date.now() > decode.exp * 1000) {
+        this.props.history.push("/login", {
+          message: "Token expired please login again",
+        });
+      } else {
+        this.props.getDestinationCode();
+        this.setState({ destinationValueFlag: true });
+      }
     }
     if (event.target.name === "transporterValue") {
-      this.props.getTransporterCode();
-      this.setState({ transporterValueFlag: true });
+      if (Date.now() > decode.exp * 1000) {
+        this.props.history.push("/login", {
+          message: "Token expired please login again",
+        });
+      } else {
+        this.props.getTransporterCode();
+        this.setState({ transporterValueFlag: true });
+      }
     }
   };
 
