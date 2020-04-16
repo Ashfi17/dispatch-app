@@ -47,3 +47,8 @@
   text-align: center;
   font-size: 16px;
 }
+
+.error-disptach-text {
+  color: rebeccapurple;
+  padding: 0px 60px;
+}

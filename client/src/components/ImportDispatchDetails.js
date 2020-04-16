@@ -24,6 +24,8 @@ export class ImportDispatchDetails extends Component {
     sourceValueFlag: false,
     destinationValueFlag: false,
     transporterValueFlag: false,
+    errorMessage: "",
+    successMessage: "",
   };
 
   componentDidMount() {
@@ -69,7 +71,13 @@ export class ImportDispatchDetails extends Component {
       transporter: this.state.transporter,
     };
     this.props.addNewSDT(data);
-    this.setState({ source: "", destination: "", transporter: "" });
+
+    this.setState({
+      source: "",
+      destination: "",
+      transporter: "",
+      errorMessage: "Added Successfully",
+    });
   };
 
   saveDispatchDetails = async () => {
@@ -92,6 +100,7 @@ export class ImportDispatchDetails extends Component {
     };
 
     this.props.addNewDispatch(dispatchData);
+    this.setState({ errorMessage: "Added Successfully" });
   };
 
   addCode = (code, type) => {
@@ -164,6 +173,13 @@ export class ImportDispatchDetails extends Component {
           >
             Save
           </button>
+          <span className="error-disptach-text">
+            {this.props.errordispatchMessage
+              ? this.props.errordispatchMessage
+              : this.props.DispatchDataMessage
+              ? this.props.DispatchDataMessage
+              : null}
+          </span>
         </div>
         <h1 style={{ textAlign: "center" }}>Add New Dispatch Details</h1>
         <div className="add-new-dispatch-info">
@@ -299,6 +315,8 @@ const mapStateToProps = (state) => ({
   sourceCode: state.DispatchReducer.sourceCode,
   destinationCode: state.DispatchReducer.destinationCode,
   transporterCode: state.DispatchReducer.transporterCode,
+  DispatchDataMessage: state.DispatchReducer.DispatchDataMessage,
+  errordispatchMessage: state.DispatchReducer.errordispatchMessage,
 });
 export default connect(mapStateToProps, {
   addNewSDT,

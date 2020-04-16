@@ -12,7 +12,7 @@ export class Home extends Component {
   componentDidMount() {
     if (localStorage.getItem("token")) {
       var decode = jwt_decode(localStorage.getItem("token"));
-      console.log(decode);
+
       //checking if the token is expired or not
       if (Date.now() > decode.exp * 1000) {
         //if token is expired push to login page

@@ -7,6 +7,7 @@ import {
   GET_DESTINATION_CODE,
   GET_TRANSPORTER_CODE,
   ADD_NEW_DISPATCH,
+  ERROR_DISPATCH_MESSAGE,
 } from ".././actions/Types";
 
 const initialState = {
@@ -15,6 +16,9 @@ const initialState = {
   destinationCode: [],
   transporterCode: [],
   excelMessage: "",
+  DataMessage: "",
+  DispatchDataMessage: "",
+  errordispatchMessage: "",
 };
 
 export default function (state = initialState, action) {
@@ -26,7 +30,11 @@ export default function (state = initialState, action) {
     case EXPORT:
       return { ...state, excelMessage: action.payload };
     case ADD_SOURCE_DESTINATION_TRANSPORTER:
-      return state;
+      return {
+        ...state,
+        DispatchDataMessage: action.payload,
+        errordispatchMessage: "",
+      };
     case GET_SOURCE_CODE:
       return { ...state, sourceCode: action.payload };
     case GET_DESTINATION_CODE:
@@ -35,6 +43,8 @@ export default function (state = initialState, action) {
       return { ...state, transporterCode: action.payload };
     case ADD_NEW_DISPATCH:
       return state;
+    case ERROR_DISPATCH_MESSAGE:
+      return { ...state, errordispatchMessage: action.payload };
     default:
       return state;
   }

@@ -13,7 +13,6 @@ router.post("/new", async (req, res, next) => {
   const email = req.body.user_email;
 
   try {
-    console.log(password);
     mySqlConnection.query(
       `select user_email from users where user_email = ?`,
       [email],
@@ -26,12 +25,29 @@ router.post("/new", async (req, res, next) => {
               [req.body.user_name, email, password],
               (err, result) => {
                 if (!err) {
-                  res.status(200).send({
-                    status: 200,
-                    message: "user created successfully",
-                  });
+                  // res.status(200).send({
+                  //   status: 200,
+                  //   message: "user created successfully",
+                  // });
+                  mySqlConnection.query(
+                    `select * from users where user_email = ?`,
+                    [email],
+                    (err, result) => {
+                      if (!err) {
+                        res.status(200).send({
+                          status: 200,
+                          data: result,
+                          message: "user created successfully",
+                        });
+                      } else {
+                        res.status(400).send({
+                          status: 400,
+                          message: "ERROR! bad request",
+                        });
+                      }
+                    }
+                  );
                 } else {
-                  console.log(err);
                   res.status(400).send({
                     status: 400,
                     message: "bad request",

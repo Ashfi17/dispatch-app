@@ -7,6 +7,7 @@ import {
   GET_SOURCE_CODE,
   GET_TRANSPORTER_CODE,
   ADD_NEW_DISPATCH,
+  ERROR_DISPATCH_MESSAGE,
 } from "./Types";
 import axios from "axios";
 import config from "../config";
@@ -75,10 +76,14 @@ export const addNewSDT = (data) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: ADD_SOURCE_DESTINATION_TRANSPORTER,
+        payload: res.data.message,
       });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: ERROR_DISPATCH_MESSAGE,
+        payload: err.response.data.message,
+      });
     });
 };
 
@@ -139,9 +144,13 @@ export const addNewDispatch = (dispatchData) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: ADD_NEW_DISPATCH,
+        payload: res.data.message,
       });
     })
     .catch((err) => {
-      console.log(err);
+      dispatch({
+        type: ERROR_DISPATCH_MESSAGE,
+        payload: err.response.data.message,
+      });
     });
 };

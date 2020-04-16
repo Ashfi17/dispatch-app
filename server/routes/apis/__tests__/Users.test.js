@@ -63,7 +63,7 @@ describe("testing user apis", () => {
     done();
   });
   //should successfully login a user if the  credentials are correct
-  it("should return a status code of 400 and a message while login ", async (done) => {
+  it("should return a status code of 200 and a message while login ", async (done) => {
     let data = {
       user_email: "Testcase@gmail.com", //correct email
       user_password: "testspassword",
