@@ -21,13 +21,17 @@ router.post("/new", async (req, res, next) => {
           //if there is no similar email id present in db then procedd further
           if (userEmail.length == 0) {
             mySqlConnection.query(
-              "INSERT INTO users(user_name,user_email,user_address,user_password)VALUES(?,?,?,?)",
-              [req.body.user_name, email, req.body.user_address, password],
+              "INSERT INTO users(user_name,user_email,user_password)VALUES(?,?,?)",
+              [req.body.user_name, email, password],
               (err, result) => {
                 if (!err) {
+                  // res.status(200).send({
+                  //   status: 200,
+                  //   message: "user created successfully",
+                  // });
                   mySqlConnection.query(
-                    "SELECT * FROM demo.users WHERE user_email = ?",
-                    email,
+                    `select * from users where user_email = ?`,
+                    [email],
                     (err, result) => {
                       if (!err) {
                         res.status(200).send({
@@ -38,7 +42,7 @@ router.post("/new", async (req, res, next) => {
                       } else {
                         res.status(400).send({
                           status: 400,
-                          message: "bad request",
+                          message: "ERROR! bad request",
                         });
                       }
                     }
@@ -90,8 +94,6 @@ router.post("/login", async (req, res, next) => {
               let userDetails = {
                 user_id: userDetail[0].user_id,
                 user_email: userDetail[0].user_email,
-                user_name: userDetail[0].user_name,
-                user_password: userDetail[0].user_password,
               };
               let token = generateToken(userDetails);
               res.status(200).json({

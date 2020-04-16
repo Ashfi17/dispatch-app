@@ -87,7 +87,7 @@ describe("testing dispatch api", () => {
       });
     done();
   });
-  it("should return status code of 400 with a message if nothing is found", async (done) => {
+  it("should return status code of 400 with a message if nothing is found in search", async (done) => {
     let data = {
       search: "kl",
     };

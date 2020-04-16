@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing import dispatch details component should render the component 1`] = `
+<div>
+  <div
+    className="add-source-destination"
+  >
+    <h1>
+      Add new source,destination and transporter
+    </h1>
+    <input
+      className="data-input-field"
+      id="source-id"
+      name="source"
+      onChange={[Function]}
+      placeholder="source name"
+      type="text"
+      value=""
+    />
+    <input
+      className="data-input-field"
+      id="destination-id"
+      name="destination"
+      onChange={[Function]}
+      placeholder="destination name"
+      type="text"
+      value=""
+    />
+    <input
+      className="data-input-field"
+      id="transporter-id"
+      name="transporter"
+      onChange={[Function]}
+      placeholder="transporter name"
+      type="text"
+      value=""
+    />
+    <button
+      className="submit-button"
+      id="add-details-submit-button"
+      onClick={[Function]}
+    >
+      Save
+    </button>
+    <span
+      className="error-disptach-text"
+    />
+  </div>
+  <h1
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    Add New Dispatch Details
+  </h1>
+  <div
+    className="add-new-dispatch-info"
+  >
+    <div
+      className="left-card-section"
+    >
+      <input
+        className="data-input-field"
+        id="sourceValue-id"
+        name="sourceValue"
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Source code eg:S001"
+        type="text"
+        value=""
+      />
+      <input
+        className="data-input-field right-section-input"
+        id="destinationValue-id"
+        name="destinationValue"
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Destination code eg:D001"
+        type="text"
+        value=""
+      />
+      <input
+        className="data-input-field right-section-input"
+        id="transporterValue-id"
+        name="transporterValue"
+        onChange={[Function]}
+        onFocus={[Function]}
+        placeholder="Transporter code eg:T001"
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="right-card-section"
+    >
+      <input
+        className="data-input-field "
+        id="vehicleNumber-id"
+        name="vehicleNumber"
+        onChange={[Function]}
+        placeholder="vehicle number"
+        type="text"
+        value=""
+      />
+      <input
+        className="data-input-field right-section-input"
+        id="startDate-id"
+        name="startDate"
+        onChange={[Function]}
+        placeholder="start Date"
+        type="text"
+        value=""
+      />
+      <input
+        className="data-input-field right-section-input"
+        id="endDate-id"
+        name="endDate"
+        onChange={[Function]}
+        placeholder="end Date"
+        type="text"
+        value=""
+      />
+    </div>
+  </div>
+  <button
+    className="save-dispatch-button"
+    id="add-dispatch-details-button"
+    onClick={[Function]}
+  >
+    Add
+  </button>
+  <span
+    className="error-disptach-text"
+    style={
+      Object {
+        "paddingBottom": "30px",
+        "textAlign": "center",
+      }
+    }
+  />
+</div>
+`;

@@ -5,6 +5,10 @@ import { Home } from "../Home";
 const getDispatchInfo = jest.fn();
 const search = jest.fn();
 const exportExcel = jest.fn();
+const history = {
+  push: jest.fn(),
+  // location: { state: { message: "Token Expired please login again" } },
+};
 
 const dispatchDetails = [
   {
@@ -24,6 +28,7 @@ const wrapper = shallow(
     search={search}
     exportExcel={exportExcel}
     dispatchDetails={dispatchDetails}
+    history={history}
   />
 );
 
@@ -38,7 +43,7 @@ describe("test suite for Home component", () => {
   it("should mount the component", () => {
     expect(wrapper).toMatchSnapshot();
   });
-  it("should test all the functions when the button is clicked", () => {
+  it("should test  the functions is working when user searches ", () => {
     const OnTextChange = jest.spyOn(wrapper.instance(), "OnTextChange");
     const searchSourceCode = jest.spyOn(wrapper.instance(), "searchSourceCode");
     const event = {
@@ -47,17 +52,15 @@ describe("test suite for Home component", () => {
     wrapper.find("#search").simulate("change", event);
     expect(OnTextChange).toBeCalled();
     expect(searchSourceCode).toBeCalled();
-    wrapper.setState({ search: "" });
-    expect(getDispatchInfo).toBeCalledWith({ order: "desc" });
   });
-  it("should test the button clicks and check if the action functions are being called", () => {
+  it("should test the button clicks and check if the sortByDate function is being called", () => {
     const onSortByStartDateSelected = jest.spyOn(
       wrapper.instance(),
       "onSortByStartDateSelected"
     );
-    wrapper.find("#sort-btn").simulate("click");
+    expect(wrapper.find("#sort-btn").simulate("click"));
+    wrapper.instance().forceUpdate();
     expect(onSortByStartDateSelected).toBeCalled();
-    expect(getDispatchInfo).toBeCalledWith({ order: "desc" });
   });
   it("should test the button clicks and check if the action functions are being called", () => {
     wrapper.find("#export-button").simulate("click");

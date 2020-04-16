@@ -10,15 +10,21 @@ export class Home extends Component {
     message: "",
   };
   componentDidMount() {
-    var decode = jwt_decode(localStorage.getItem("token"));
-    // console.log(decode);
-    //checking if the token is expired or not
-    if (Date.now() > decode.exp * 1000) {
-      //if token is expired push to login page
+    if (localStorage.getItem("token")) {
+      var decode = jwt_decode(localStorage.getItem("token"));
+
+      //checking if the token is expired or not
+      if (Date.now() > decode.exp * 1000) {
+        //if token is expired push to login page
+        this.props.history.push("/login", {
+          message: "Token expired please login again",
+        });
+      } else this.props.getDispatchInfo({ order: "desc" });
+    } else {
       this.props.history.push("/login", {
-        message: "Token expired please login again",
+        message: "No token present, please login",
       });
-    } else this.props.getDispatchInfo({ order: "desc" });
+    }
   }
   //function to handle text change in search
   OnTextChange = (event) => {
@@ -77,7 +83,7 @@ export class Home extends Component {
               id="search"
               className="search-field"
               name="search"
-              placeholder="search source code"
+              placeholder="search by source code"
               value={this.state.search}
               onChange={(e) => this.OnTextChange(e)}
             />
@@ -102,9 +108,10 @@ export class Home extends Component {
                   //this function creates the excel sheet
                   await this.props.exportExcel();
                   this.setState({ message: this.props.excelMessage });
-                  setTimeout(() => {
+                  clearTimeout(this.timeOutId);
+                  this.timeOutId = setTimeout(() => {
                     this.setState({ message: "" });
-                  }, 2000);
+                  }, 5000);
                 }
               }}
             >
@@ -112,33 +119,45 @@ export class Home extends Component {
             </button>
             <button
               className="heading-buttons"
-              onClick={this.onSortByStartDateSelected}
+              onClick={() => this.props.history.push("/import-new")}
             >
-              Import New Data
+              Add New Detail
             </button>
           </div>
-          <table id="table-container">
-            <tr>
-              <th>Delivery No.</th>
-              <th>Source Code</th>
-              <th>Destination Code</th>
-              <th>Transporter Code</th>
-              <th>Vehicle Number</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-            </tr>
-            {this.props.dispatchDetails.map((info, index) => (
-              <tr key={index}>
-                <td>{info.delivery_number}</td>
-                <td>{info.source_code}</td>
-                <td>{info.destination_code}</td>
-                <td>{info.transporter_code}</td>
-                <td>{info.vehicle_number}</td>
-                <td>{new Date(info.start_date).toISOString().slice(0, 10)}</td>
-                <td>{new Date(info.end_date).toISOString().slice(0, 10)}</td>
+          {this.props.dispatchDetails ? (
+            <table id="table-container">
+              <tr>
+                <th>Delivery No.</th>
+                <th>Source Code</th>
+                <th>Destination Code</th>
+                <th>Transporter Code</th>
+                <th>Vehicle Number</th>
+                <th>Start Date</th>
+                <th>End Date</th>
               </tr>
-            ))}
-          </table>
+              {this.props.dispatchDetails.map((info, index) => (
+                <tr key={index}>
+                  <td>{info.delivery_number}</td>
+                  <td>{info.source_code}</td>
+                  <td>{info.destination_code}</td>
+                  <td>{info.transporter_code}</td>
+                  <td>{info.vehicle_number}</td>
+                  <td>
+                    {info.start_date
+                      .slice(0, 10)
+                      .split("-")
+                      .reverse()
+                      .join("-")}
+                  </td>
+                  <td>
+                    {info.end_date.slice(0, 10).split("-").reverse().join("-")}
+                  </td>
+                </tr>
+              ))}
+            </table>
+          ) : (
+            <span>No data yet, add some Dispatch Info to view here</span>
+          )}
           <p className="message">{this.state.message}</p>
         </div>
       </div>

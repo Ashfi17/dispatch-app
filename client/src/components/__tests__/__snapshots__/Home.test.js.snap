@@ -13,7 +13,7 @@ exports[`test suite for Home component should mount the component 1`] = `
         id="search"
         name="search"
         onChange={[Function]}
-        placeholder="search source code"
+        placeholder="search by source code"
         value=""
       />
       <button
@@ -34,7 +34,7 @@ exports[`test suite for Home component should mount the component 1`] = `
         className="heading-buttons"
         onClick={[Function]}
       >
-        Import New Data
+        Add New Detail
       </button>
     </div>
     <table
@@ -82,10 +82,10 @@ exports[`test suite for Home component should mount the component 1`] = `
           MH04AB1234
         </td>
         <td>
-          2020-01-21
+          21-01-2020
         </td>
         <td>
-          2020-02-22
+          22-02-2020
         </td>
       </tr>
     </table>

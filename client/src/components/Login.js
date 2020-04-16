@@ -68,6 +68,16 @@ export class Login extends Component {
             >
               Login
             </button>
+            <span
+              style={{
+                textAlign: "center",
+                cursor: "pointer",
+                marginTop: "8px",
+              }}
+              onClick={() => this.props.history.push("/sign-up")}
+            >
+              Dont have an account ? SignUp
+            </span>
           </div>
         </div>
       </div>
