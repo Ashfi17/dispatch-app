@@ -25,6 +25,7 @@ export class SignUp extends Component {
   };
 
   validateAndRegister = async () => {
+    //check if any of the fields are empty
     if (
       !this.state.name ||
       !this.state.email ||
@@ -35,21 +36,25 @@ export class SignUp extends Component {
         errorMessage: "Enter all the fields",
       });
     } else {
+      //check if the pasword and confirm password fleds are matching or not
       if (this.state.password !== this.state.confirmPassword) {
         this.setState({
           errorMessage: "Password does not match",
         });
       } else {
+        //checking the length of password
         if (this.state.password.length < 5) {
           this.setState({
             errorMessage: "Password length should be greater then 5!",
           });
         } else {
+          //checking the length of email
           if (this.state.email.length < 5) {
             this.setState({
               errorMessage: "Please enter valid email!",
             });
           } else {
+            //if all conditions are satisfied call the action and pass the values
             this.setState({
               errorMessage: "",
             });

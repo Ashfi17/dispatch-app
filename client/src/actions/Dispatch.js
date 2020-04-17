@@ -1,7 +1,6 @@
 import {
   GET_DISPATCH_INFO,
   SEARCH,
-  EXPORT,
   ADD_SOURCE_DESTINATION_TRANSPORTER,
   GET_DESTINATION_CODE,
   GET_SOURCE_CODE,
@@ -41,22 +40,6 @@ export const search = (searchTerm) => (dispatch) => {
       dispatch({
         type: SEARCH,
         payload: res.data.data,
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-//function to export excel sheet
-export const exportExcel = () => (dispatch) => {
-  return axios
-    .get(url + "/get-excel", {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    })
-    .then((res) => {
-      dispatch({
-        type: EXPORT,
-        payload: res.data.message,
       });
     })
     .catch((err) => {

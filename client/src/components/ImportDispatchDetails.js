@@ -51,19 +51,23 @@ export class ImportDispatchDetails extends Component {
       errorMessage: "",
       [event.target.name]: event.target.value,
     });
+    //checking if the taget.name is sourceValue and value is empty then dont show the dropdown
     if (event.target.name === "sourceValue") {
       if (event.target.value === "") this.setState({ sourceValueFlag: false });
     }
+    //checking if the taget.name is destinationValue and value is empty then dont show the dropdown
     if (event.target.name === "destinationValue") {
       if (event.target.value === "")
         this.setState({ destinationValueFlag: false });
     }
+    //checking if the taget.name is transporterValue and value is empty then dont show the dropdown
     if (event.target.name === "transporterValue") {
       if (event.target.value === "")
         this.setState({ transporterValueFlag: false });
     }
   };
 
+  //function to save the transporter destination and source name
   saveData = () => {
     var decode = jwt_decode(localStorage.getItem("token"));
 
@@ -77,8 +81,10 @@ export class ImportDispatchDetails extends Component {
         destination: this.state.destination,
         transporter: this.state.transporter,
       };
+      //action call to add the source destination and transporter
       this.props.addNewSDT(data);
 
+      //setting the fields  after saving
       this.setState({
         source: "",
         destination: "",
@@ -88,6 +94,7 @@ export class ImportDispatchDetails extends Component {
     }
   };
 
+  //function to save dispatch info
   saveDispatchDetails = async () => {
     const {
       sourceValue,
@@ -113,6 +120,7 @@ export class ImportDispatchDetails extends Component {
         vehicle_number: vehicleNumber,
       };
 
+      //action to save the new dispatch details
       this.props.addNewDispatch(dispatchData);
       this.setState({
         sourceValue: "",
@@ -125,6 +133,7 @@ export class ImportDispatchDetails extends Component {
     }
   };
 
+  //function to set the state value of transporter , destination and save when the dropdown item is selected
   addCode = (code, type) => {
     if (type === "source")
       this.setState({ sourceValue: code, sourceValueFlag: false });
@@ -134,6 +143,7 @@ export class ImportDispatchDetails extends Component {
       this.setState({ transporterValue: code, transporterValueFlag: false });
   };
 
+  //function to call the action to fetch the list of source ,destiantion and transporter code
   handleFocus = (event) => {
     var decode = jwt_decode(localStorage.getItem("token"));
     if (event.target.name === "sourceValue") {

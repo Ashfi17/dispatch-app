@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getDispatchInfo, search, exportExcel } from "../actions/Dispatch";
+import { getDispatchInfo, search } from "../actions/Dispatch";
 import { connect } from "react-redux";
 import "../assets/styles/Home.css";
 import jwt_decode from "jwt-decode";
@@ -74,6 +74,38 @@ export class Home extends Component {
     });
   };
 
+  //function export To CSV
+  exportTableToExcel = (tableID, fileName = "") => {
+    var dataType = "application/vnd.ms-excel";
+    var tableSelect = document.getElementById(tableID);
+    // / /g is a regex that applies globally and the second element performs a basic URL encoding replacing spaces with their URL equivalent %20
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, "%20");
+
+    // Specify file name
+    fileName = fileName ? fileName + ".xls" : "excel_data.xls";
+
+    // Create download link element
+    let downloadLink = document.createElement("a");
+
+    document.body.appendChild(downloadLink);
+
+    if (navigator.msSaveOrOpenBlob) {
+      var blob = new Blob(["\ufeff", tableHTML], {
+        type: dataType,
+      });
+      navigator.msSaveOrOpenBlob(blob, fileName);
+    } else {
+      // Create a link to the file
+      downloadLink.href = "data:" + dataType + ", " + tableHTML;
+
+      // Setting the file name
+      downloadLink.download = fileName;
+
+      //triggering the function
+      downloadLink.click();
+    }
+  };
+
   render() {
     return (
       <div>
@@ -106,12 +138,7 @@ export class Home extends Component {
                   });
                 } else {
                   //this function creates the excel sheet
-                  await this.props.exportExcel();
-                  this.setState({ message: this.props.excelMessage });
-                  clearTimeout(this.timeOutId);
-                  this.timeOutId = setTimeout(() => {
-                    this.setState({ message: "" });
-                  }, 5000);
+                  this.exportTableToExcel("table-container", "dispatch");
                 }
               }}
             >
@@ -173,5 +200,4 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   getDispatchInfo,
   search,
-  exportExcel,
 })(Home);

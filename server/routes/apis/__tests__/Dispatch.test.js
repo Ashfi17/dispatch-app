@@ -104,19 +104,4 @@ describe("testing dispatch api", () => {
       });
     done();
   });
-  it("should return status code of 200 with a message if excel is created", async (done) => {
-    await request(app)
-      .get("/apis/dispatch/get-excel")
-
-      .set("Content-type", "application/json")
-      .set("Authorization", `Bearer ${token}`)
-      .then((response) => {
-        expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(expect.any(Object));
-        expect(response.body.message).toBe(
-          "The file has been downloaded to following directory - server/dispatch_report.xlsx"
-        );
-      });
-    done();
-  });
 });

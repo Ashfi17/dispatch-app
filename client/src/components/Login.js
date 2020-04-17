@@ -10,6 +10,7 @@ export class Login extends Component {
     email: "",
     errorMessage: "",
   };
+  //function to handle the text change
   OnTextChange = (event) => {
     this.setState({
       errorMessage: "",
@@ -17,6 +18,7 @@ export class Login extends Component {
     });
   };
 
+  //function to login the user by passing the values typed by user in input field
   loginUser = async () => {
     let userLoginCreds = {
       user_email: this.state.email,
